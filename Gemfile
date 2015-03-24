@@ -37,3 +37,6 @@ gem 'coffee-rails'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'spring',        group: :development
+gem 'pry'
+gem 'pry-debundle'
+gem 'pry-byebug'

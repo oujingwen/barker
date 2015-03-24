@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
-  def index 
-    @users = User.all 
-
+  def index
+    @users = User.all
   end
 
   def new
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     @user.created_date = Time.now
 
     respond_to do |format|
@@ -22,34 +21,33 @@ class UsersController < ApplicationController
         format.html { render :action => "new" }
       end
     end
-  
   end
 
   def login
     @user = User.new
-
   end
 
   def process_login
-
     respond_to do |format|
-      if user = User.authenticate(params[:user])
+      if user = User.authenticate(user_params)
         session[:id] = user.id
         format.html { redirect_to(barks_path) }
       else
         format.html { redirect_to(users_login_path, :notice => 'Invalid login.') }
       end
     end
-
   end
 
   def logout
     reset_session
-
     respond_to do |format|
       format.html { redirect_to(users_login_path, :notice => 'Logged out.') }
     end
-
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :fullname, :password)
+  end
 end
