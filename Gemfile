@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+ruby '2.1.4'
+gem 'rails', '4.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,3 +30,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem 'dalli'
+gem 'squeel', :git => "git://github.com/ernie/squeel.git"
+gem "ransack", :git => "git://github.com/ernie/ransack.git", :branch => 'rails-4'
+gem 'coffee-rails'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'spring',        group: :development
